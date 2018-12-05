@@ -9,19 +9,23 @@ package bankaccount;
  *
  * @author Calvin
  */
-public class Account {
+public abstract class Account {
     private String name; 
     double balance;
-    final double overdraft;
+    double overdraft;
     
     public Account() { 
-    name = null;
-    balance = 0.0;
+        name = null;
+        balance = 0.0;
     } 
+    
     public Account(String newName, double newBalance) { 
         name = newName;
         balance = newBalance;  
     } 
+    
+    protected abstract void setOverdraft();
+    
     public String getName() { 
         return name;
     }

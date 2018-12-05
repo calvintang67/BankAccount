@@ -10,12 +10,16 @@ package bankaccount;
  * @author Calvin
  */
 public class CheckingAccount extends Account { 
-    double overDraft = -1000; 
 
+    public CheckingAccount(String newName, double newBalance) {
+        super(newName, newBalance);
+        setOverdraft();
+    }
+    
     public void checking(double i) { 
     //initializes double variable balance as 0.0 
     double balance = 0.0; 
-    if (balance - i < overDraft){ 
+    if (balance - i < super.overdraft){ 
         System.out.println("Failure: Can't overdraft more than $1,000. A $25 +" + "overdraft fee will be issued to your account. "); 
         balance = balance - 25; 
     } 
@@ -23,5 +27,10 @@ public class CheckingAccount extends Account {
         balance = balance - i;
     } 
     } 
+
+    @Override
+    protected void setOverdraft() {
+        super.overdraft = -1000;
+    }
 }
 

@@ -10,16 +10,23 @@ package bankaccount;
  * @author Calvin
  */
 public class SavingsAccount extends Account{ 
-    
-    
-    
-    double overdraftLimit = 0; 
-    public void withdraw (double w) { 
-    if (balance - w < overdraftLimit){ 
-        System.out.println("Insufficient Funds"); 
+
+    public SavingsAccount(String newName, double newBalance) {
+        super(newName, newBalance);
+        setOverdraft();
     }
-    else {
-        balance = balance - w; 
-    } 
-}
+
+    public void withdraw (double w) { 
+        if (balance - w < super.overdraft){ 
+            System.out.println("Insufficient Funds"); 
+        }
+        else {
+            balance = balance - w; 
+        } 
+    }
+
+    @Override
+    protected void setOverdraft() {
+        super.overdraft = 0;
+    }
 }

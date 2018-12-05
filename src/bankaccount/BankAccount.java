@@ -15,10 +15,10 @@ public class BankAccount {
      * @param args the command line arguments
      */
     
-   SavingsAccount savings = new SavingsAccount();
-   CheckingAccount checking = new CheckingAccount();
-   Account account;
-   
+//   SavingsAccount savings = new SavingsAccount();
+//   CheckingAccount checking = new CheckingAccount();
+//   Account account;
+//   
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> new BankAccountSim());
     }

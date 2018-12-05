@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public class BankAccountSim extends javax.swing.JFrame {
 
+    private ArrayList<Account> list = new ArrayList<>();
+    
     /**
      * Creates new form BankAccountSim
      */
@@ -193,7 +195,7 @@ public class BankAccountSim extends javax.swing.JFrame {
 
    public void update() {
             
-for(int i = 0; i <  bankAccount.getRowCount(); i++){
+        for(int i = 0; i <  bankAccount.getRowCount(); i++){
             if(bankAccount.getValueAt(i,0) == null){
                 String accName = jTextField1.getText();
                 bankAccount.setValueAt(jTextField1.getText(), i,0);
@@ -202,10 +204,16 @@ for(int i = 0; i <  bankAccount.getRowCount(); i++){
                 String balance = jTextField2.getText();
                 double initialBalance = Double.parseDouble(balance);
                 bankAccount.setValueAt(initialBalance,i,2);
+                if(accType.equals("Savings")){
+                    list.add(new SavingsAccount(accName, initialBalance));
+                }else if(accType.equals("Checkings")){
+                    list.add(new CheckingAccount(accName, initialBalance));
+                }
                 break;
-		}
+            }
         }
-}
+        
+    }
 }
 
 
